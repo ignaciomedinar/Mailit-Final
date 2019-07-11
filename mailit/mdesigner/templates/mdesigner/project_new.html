@@ -1,0 +1,30 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %} - New{% endblock %}
+
+{% block contenido %}
+
+<form id= "logForm" action="" method="POST">
+  {% csrf_token %}
+  <!-- <label for="GET-name">password</label> -->
+  <input id="nombreProyecto" type="text" name="nombreProyecto" maxlength="10" placeholder="Nombre del Proyecto" required>
+  <!-- {{form}} -->
+  <br><br>
+  <input type="submit" name="submit" value="Enviar" />
+  {% if next %}
+  <input type="hidden" name="next" value="{{ next }}" />
+  {% else %}
+  <input type="hidden" name="next" value="/" />
+  {% endif %}
+  {% if msg %}
+  <aside class="alert alert-dismissible alert-danger">
+      {{ msg }}
+  </aside>
+
+  <!-- {% for option in options %}
+  <p>{{option.field}}</p>
+  {% endfor %} -->
+
+  {% endif %}
+
+{% endblock %}
